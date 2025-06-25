@@ -8,6 +8,8 @@ const Contact = () => {
     name: "",
     phone: "",
     message: "",
+    fullAddress: "",
+    formType: "",
   });
   const [status, setStatus] = useState("");
   const [error, setError] = useState(false);
@@ -20,7 +22,7 @@ const Contact = () => {
     e.preventDefault();
     const result = await submitContactForm({
       ...formData,
-      form_type: "contact",
+      formType: "contact",
     });
     setStatus(result.message);
     setError(!result.success);
@@ -55,6 +57,15 @@ const Contact = () => {
             placeholder="Your Phone"
             className={`w-full p-3 border rounded-lg}`}
             value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="fullAddress"
+            placeholder="Your Full Address"
+            className="w-full p-3 border rounded-lg"
+            value={formData.fullAddress}
             onChange={handleChange}
             required
           />

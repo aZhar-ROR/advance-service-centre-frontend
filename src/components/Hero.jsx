@@ -20,6 +20,7 @@ const Hero = () => {
     name: "",
     phone: "",
     fullAddress: "",
+    issue: "",
     message: "",
   });
   const [status, setStatus] = useState("");
@@ -32,13 +33,13 @@ const Hero = () => {
     e.preventDefault();
     const result = await submitContactForm({
       ...formData,
-      form_type: "book_service",
+      formType: "Service Booking",
     });
     setStatus(result.message);
     setError(!result.success);
 
     if (result.success) {
-      setFormData({ name: "", email: "", phone: "", message: "", fullAddress: "" });
+      setFormData({ name: "", issue: "", phone: "", message: "", fullAddress: "" });
     }
   };
 
@@ -127,6 +128,15 @@ const Hero = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Your Phone"
+                className="w-full p-3 border rounded"
+                required
+              />
+              <input
+                type="text"
+                name="issue"
+                value={formData.issue}
+                onChange={handleChange}
+                placeholder="Issue Type (e.g., AC Repair)"
                 className="w-full p-3 border rounded"
                 required
               />
