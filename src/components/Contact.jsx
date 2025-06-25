@@ -52,15 +52,12 @@ const Contact = () => {
           <input
             type="tel"
             name="phone"
-            placeholder="Your Phone (with country code)"
-            className={`w-full p-3 border rounded-lg ${!phoneRegex.test(formData.phone) && formData.phone ? 'border-red-500' : ''}`}
+            placeholder="Your Phone"
+            className={`w-full p-3 border rounded-lg}`}
             value={formData.phone}
             onChange={handleChange}
             required
           />
-          {!phoneRegex.test(formData.phone) && formData.phone && (
-            <p className="text-red-500 text-sm mt-1">Invalid phone number format. Use +91XXXXXXXXXX.</p>
-          )}
           <textarea
             name="message"
             placeholder="Your Message"

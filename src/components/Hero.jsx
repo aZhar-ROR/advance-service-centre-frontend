@@ -38,7 +38,7 @@ const Hero = () => {
     setError(!result.success);
 
     if (result.success) {
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", message: "", fullAddress: "" });
     }
   };
 
@@ -122,15 +122,6 @@ const Hero = () => {
                 required
               />
               <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Your Email"
-                className="w-full p-3 border rounded"
-                required
-              />
-              <input
                 type="text"
                 name="phone"
                 value={formData.phone}
@@ -139,14 +130,22 @@ const Hero = () => {
                 className="w-full p-3 border rounded"
                 required
               />
+              <input
+                type="text"
+                name="full-address"
+                value={formData.fullAddress}
+                onChange={handleChange}
+                placeholder="Full Address"
+                className="w-full p-3 border rounded"
+                required
+              />
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Describe your issue"
+                placeholder="Describe your issue or request (Optional)"
                 className="w-full p-3 border rounded"
                 rows="4"
-                required
               ></textarea>
 
               <button
