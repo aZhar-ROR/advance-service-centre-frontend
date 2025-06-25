@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
-const phoneRegex = /^\+\d{1,3}\d{7,14}$/; 
+import { submitContactForm } from "../utils/submitContactForm";
+const phoneRegex = /^\+\d{1,3}\d{7,14}$/;
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,15 +18,14 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post("http://localhost:5000/send-message", formData);
-      setStatus("Message Sent Successfully!");
-      setError(false);
+    const result = await submitContactForm({
+      ...formData,
+      form_type: "contact",
+    });
+    setStatus(result.message);
+    setError(!result.success);
+    if (result.success) {
       setFormData({ name: "", phone: "", message: "" });
-    } catch (error) {
-      console.error(error);
-      setStatus("Failed to send message. Try again later.");
-      setError(true);
     }
   };
 
