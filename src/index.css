@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:root{
+  --primary-color: #463fda;
+
+  /* Light Variants */
+  --primary-light-1: #6a5ff5;
+  --primary-light-2: #8c81ff;
+  --primary-light-3: #b0aaff;
+  
+  /* Dark Variants */
+  --primary-dark-1: #3d38c9;
+  --primary-dark-2: #322fa7;
+  --primary-dark-3: #272683;
+  
+  --secondary-color: #fff;
+
+  --accent-color: #00eaff;
+
+  --background-light: #f8f9fa;
+  --text-dark: #2a2a2a;
+  --text-light: #f4f4f4;
+
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+
+}
+.primary-bg-color{
+  background-color: var(--primary-color) !important;
+}
+
+.text-primary{
+  color: var(--primary-color) !important;
+}
+
+.blue-gradient{
+  background: rgb(37,31,170);
+  background: linear-gradient(90deg, rgba(37,31,170,1) 0%, rgba(68,61,217,1) 34%, rgba(87,82,190,1) 100%);
+}
+
+.bg-primary-light-1 { background-color: var(--primary-light-1); color: black; }
+.bg-primary-light-2 { background-color: var(--primary-light-2); color: black; }
+.bg-primary-light-3 { background-color: var(--primary-light-3); color: black; }
+
+.bg-primary-dark-1 { background-color: var(--primary-dark-3) !important; color: white !important; }
+.bg-primary-dark-2 { background-color: var(--primary-dark-2); color: white; }
+.bg-primary-dark-3 { background-color: var(--primary-dark-3); color: white; }
+
+.br-sm { border-radius: 4px; }
+.br-md { border-radius: 8px; }
+.br-lg { border-radius: 12px; }
+.br-xl { border-radius: 16px; }
+.br-2xl { border-radius: 24px; }
+.br-circle { border-radius: 50%; }
+.br-none { border-radius: 0; }
+
+.btn {
+  padding: 10px 16px;
+  border-radius: var(--border-radius-md);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary-dark-3);
+  color: white;
+}
+
+.btn-secondary {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.btn-accent {
+  background: var(--accent-color);
+  color: black;
+}
+
+.btn-success {
+  background: var(--success-color);
+  color: white;
+}
+
+.btn-warning {
+  background: var(--warning-color);
+  color: black;
+}
+
+.btn-danger {
+  background: var(--danger-color);
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+.border-1{
+  border-color: var(--secondary-color) !important;
+}
+.scroll-container {
+  height: 100vh; /* Full viewport height */
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* Enables snap scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling effect */
+}
+
+.section {
+  height: 100vh; /* Each section takes full height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start; /* Aligns sections at the start when scrolling */
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* Custom Swiper Navigation */
+.swiper-button-next, .swiper-button-prev {
+  color: #FFD700 !important; /* Yellow color */
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  font-size: 30px; /* Adjust size if needed */
+  font-weight: bold;
+}
+
+.font-[Montserrat] {
+  font-family: "Montserrat, sans-serif";
+}
