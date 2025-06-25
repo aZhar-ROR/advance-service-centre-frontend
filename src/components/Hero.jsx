@@ -18,8 +18,8 @@ const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
+    fullAddress: "",
     message: "",
   });
   const [status, setStatus] = useState("");
@@ -132,7 +132,7 @@ const Hero = () => {
               />
               <input
                 type="text"
-                name="full-address"
+                name="fullAddress"
                 value={formData.fullAddress}
                 onChange={handleChange}
                 placeholder="Full Address"
