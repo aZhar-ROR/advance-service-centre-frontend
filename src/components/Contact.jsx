@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { submitContactForm } from "../utils/submitContactForm";
-const phoneRegex = /^\+\d{1,3}\d{7,14}$/;
+import axios from "axios";
+const phoneRegex = /^\+\d{1,3}\d{7,14}$/; 
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     message: "",
-    fullAddress: "",
-    formType: "",
   });
   const [status, setStatus] = useState("");
   const [error, setError] = useState(false);
@@ -20,14 +18,15 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await submitContactForm({
-      ...formData,
-      formType: "contact",
-    });
-    setStatus(result.message);
-    setError(!result.success);
-    if (result.success) {
+    try {
+      await axios.post("https://advance-service-centre-fullstack-1.onrender.com/send-message", formData);
+      setStatus("Message Sent Successfully!");
+      setError(false);
       setFormData({ name: "", phone: "", message: "" });
+    } catch (error) {
+      console.error(error);
+      setStatus("Failed to send message. Try again later.");
+      setError(true);
     }
   };
 
@@ -54,21 +53,15 @@ const Contact = () => {
           <input
             type="tel"
             name="phone"
-            placeholder="Your Phone"
-            className={`w-full p-3 border rounded-lg}`}
+            placeholder="Your Phone (with country code)"
+            className={`w-full p-3 border rounded-lg ${!phoneRegex.test(formData.phone) && formData.phone ? 'border-red-500' : ''}`}
             value={formData.phone}
             onChange={handleChange}
             required
           />
-          <input
-            type="text"
-            name="fullAddress"
-            placeholder="Your Full Address"
-            className="w-full p-3 border rounded-lg"
-            value={formData.fullAddress}
-            onChange={handleChange}
-            required
-          />
+          {!phoneRegex.test(formData.phone) && formData.phone && (
+            <p className="text-red-500 text-sm mt-1">Invalid phone number format. Use +91XXXXXXXXXX.</p>
+          )}
           <textarea
             name="message"
             placeholder="Your Message"
