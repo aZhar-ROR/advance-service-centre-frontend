@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
-const phoneRegex = /^\+\d{1,3}\d{7,14}$/; 
+import { submitContactForm } from "../utils/submitContactForm";
 
-const Contact = () => {
+  const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     phone: "",
+    subject: "",
     message: "",
   });
   const [status, setStatus] = useState("");
@@ -19,10 +20,19 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://advance-service-centre-fullstack-1.onrender.com/send-message", formData);
-      setStatus("Message Sent Successfully!");
-      setError(false);
-      setFormData({ name: "", phone: "", message: "" });
+      const response = await submitContactForm({ ...formData, formType: "Contact Form" });
+      setStatus(response.message);
+      setError(!response.success);
+
+      if (response.success) {
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: ""
+        });
+      }
     } catch (error) {
       console.error(error);
       setStatus("Failed to send message. Try again later.");
@@ -40,7 +50,7 @@ const Contact = () => {
       >
         <h2 className="text-4xl font-bold text-blue-600 mb-4">Contact Us</h2>
 
-        <form onSubmit={handleSubmit} className="w-full space-y-6">
+       <form onSubmit={handleSubmit} className="w-full space-y-6">
           <input
             type="text"
             name="name"
@@ -51,17 +61,32 @@ const Contact = () => {
             required
           />
           <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            className="w-full p-3 border rounded-lg"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
             type="tel"
             name="phone"
-            placeholder="Your Phone (with country code)"
-            className={`w-full p-3 border rounded-lg ${!phoneRegex.test(formData.phone) && formData.phone ? 'border-red-500' : ''}`}
+            placeholder="Your Phone"
+            className={'w-full p-3 border rounded-lg'}
             value={formData.phone}
             onChange={handleChange}
             required
           />
-          {!phoneRegex.test(formData.phone) && formData.phone && (
-            <p className="text-red-500 text-sm mt-1">Invalid phone number format. Use +91XXXXXXXXXX.</p>
-          )}
+          <input
+            type="text"
+            name="subject"
+            placeholder="Subject"
+            className="w-full p-3 border rounded-lg"
+            value={formData.subject}
+            onChange={handleChange}
+            required
+          />
           <textarea
             name="message"
             placeholder="Your Message"
