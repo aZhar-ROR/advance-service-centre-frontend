@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import heroImage from "../assets/hero-face-2.jpg";
 import { Wrench, Star, Users, ShieldCheck, X } from "lucide-react";
+import { submitContactForm } from "../utils/submitContactForm";
 
 const sentence = "Precision. Care. Excellence.".split(" ");
 const subtext = "Your trust, our expertise.";
@@ -15,6 +16,48 @@ const stats = [
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    issue: "",
+    fullAddress: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [feedback, setFeedback] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setFeedback(null);
+
+    const response = await submitContactForm(formData);
+
+    setLoading(false);
+    setFeedback(response.message);
+
+    if (response.success) {
+      setFormData({
+        name: "",
+        phone: "",
+        issue: "",
+        fullAddress: "",
+        message: "",
+      });
+      setTimeout(() => {
+        setIsModalOpen(false);
+        setFeedback(null);
+      }, 2000);
+    }
+  };
 
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-indigo-900 via-blue-900 to-gray-900 relative py-12">
@@ -68,18 +111,75 @@ const Hero = () => {
               <X size={24} />
             </button>
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Book a Service</h2>
-            <form className="space-y-4">
-              <input type="text" placeholder="Your Name" className="w-full p-2 border rounded" required />
-              <input type="email" placeholder="Your Email" className="w-full p-2 border rounded" required />
-              <input type="text" placeholder="Your Phone" className="w-full p-2 border rounded" required />
-              <textarea placeholder="Describe your issue" className="w-full p-2 border rounded" rows="4" required></textarea>
-              <button type="submit" className="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600">Submit</button>
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                className="w-full p-2 border rounded"
+                required
+                value={formData.name}
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Phone Number"
+                className="w-full p-2 border rounded"
+                required
+                value={formData.phone}
+                onChange={handleChange}
+              />
+              <select
+                name="issue"
+                className="w-full p-2 border rounded"
+                required
+                value={formData.issue}
+                onChange={handleChange}
+              >
+                <option value="">Select Service Type</option>
+                <option value="TV Repair">TV Repair</option>
+                <option value="AC Repair">AC Repair</option>
+                <option value="Geyser Repair">Geyser Repair</option>
+              </select>
+              <input
+                type="text"
+                name="fullAddress"
+                placeholder="Full Address"
+                className="w-full p-2 border rounded"
+                required
+                value={formData.fullAddress}
+                onChange={handleChange}
+              />
+              <textarea
+                name="message"
+                placeholder="Describe the issue"
+                className="w-full p-2 border rounded"
+                rows="4"
+                required
+                value={formData.message}
+                onChange={handleChange}
+              ></textarea>
+
+              {feedback && (
+                <p className={`text-sm ${feedback.includes("Success") ? "text-green-600" : "text-red-600"}`}>
+                  {feedback}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                className="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 disabled:opacity-50"
+                disabled={loading}
+              >
+                {loading ? "Sending..." : "Submit"}
+              </button>
             </form>
           </div>
         </div>
       )}
 
-            {/* Glass Cards - Statistics */}
+      {/* Glass Cards - Statistics */}
       <div className="mt-10 grid grid-cols-2 sm:grid-cols-2 md:flex justify-center gap-6 w-full max-w-lg md:max-w-4xl">
         {stats.map((stat, index) => (
           <motion.div
