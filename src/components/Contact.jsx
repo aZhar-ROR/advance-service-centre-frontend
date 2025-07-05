@@ -30,7 +30,8 @@ import { submitContactForm } from "../utils/submitContactForm";
           email: "",
           phone: "",
           subject: "",
-          message: ""
+          message: "",
+          formType: "contact_us",
         });
       }
     } catch (error) {

@@ -22,6 +22,7 @@ const Hero = () => {
     issue: "",
     fullAddress: "",
     message: "",
+    formType: "service_request"
   });
 
   const [loading, setLoading] = useState(false);
