@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import LazyImage from "./LazyImage";
 import logo from "../assets/logo_square.png";
 
 const Navbar = () => {
@@ -14,10 +15,11 @@ const Navbar = () => {
         
         {/* Left Side: Logo + Title */}
         <div className="flex items-center space-x-4">
-          <img
+          <LazyImage
             src={logo}
             alt="Logo"
             className="w-12 h-12 object-cover rounded-full border-2 border-yellow-400 shadow-md"
+            rootMargin="0px"
           />
           <h1 className="text-2xl font-extrabold tracking-wide transition-transform transform hover:scale-105 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-500" style={{ fontFamily: "Montserrat, sans-serif" }}>
             Advance Service Centre

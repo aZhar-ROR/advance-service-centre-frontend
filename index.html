@@ -42,7 +42,24 @@
         ]
       }
     </script>
-  </head>
+  
+<!-- Intersection Observer Polyfill for older browsers -->
+<script>
+  if (!('IntersectionObserver' in window)) {
+    const script = document.createElement('script');
+    script.src = 'https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver';
+    document.head.appendChild(script);
+  }
+</script>
+
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="/src/assets/hero-face-2.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="/src/assets/logo_square.png" type="image/png">
+    
+    <!-- Image optimization meta tags -->
+    <meta name="image-loading" content="lazy">
+    <meta name="decoding" content="async">
+    </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import heroImage from "../assets/hero-face-2.jpg";
+import LazyImage from "./LazyImage";
 import { Wrench, Star, Users, ShieldCheck, X } from "lucide-react";
 import { submitContactForm } from "../utils/submitContactForm";
 
@@ -100,7 +101,12 @@ const Hero = () => {
 
         {/* Right: Image */}
         <motion.div className="w-full max-w-[200px] md:max-w-[300px] bg-white rounded-2xl overflow-hidden border-4 border-yellow-500 shadow-2xl mx-auto md:mx-0">
-          <img src={heroImage} alt="Service Center" className="w-full h-full object-cover" />
+          <LazyImage 
+            src={heroImage} 
+            alt="Service Center" 
+            className="w-full h-full object-cover"
+            rootMargin="100px"
+          />
         </motion.div>
       </div>
 

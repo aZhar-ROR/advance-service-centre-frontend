@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import LazyImage from "./LazyImage";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -47,10 +48,11 @@ const About = () => {
           >
             {images.map((src, index) => (
               <SwiperSlide key={index}>
-                <img
+                <LazyImage
                   src={src}
-                  alt={`Slide ${index}`}
+                  alt={`Service ${index + 1}`}
                   className="w-full h-[350px] md:h-[400px] object-cover rounded-xl shadow-lg"
+                  rootMargin="200px"
                 />
               </SwiperSlide>
             ))}

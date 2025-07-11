@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "setup-lazy-loading": "node setup-lazy-loading.cjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
