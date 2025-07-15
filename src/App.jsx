@@ -9,6 +9,9 @@ import FloatingButtons from "./components/FloatingButtons";
 import WhyUs from "./components/WhyUs";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions";
+import TVRepairKolkata from "./components/TVRepairKolkata";
+import TVRepairHowrah from "./components/TVRepairHowrah";
+import TVRepairHooghly from "./components/TVRepairHooghly";
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
               <Contact />
             </>
           } />
+          <Route path="/tv-repair-services-kolkata" element={<TVRepairKolkata />} />
+          <Route path="/tv-repair-services-howrah" element={<TVRepairHowrah />} />
+          <Route path="/tv-repair-services-hooghly" element={<TVRepairHooghly />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         </Routes>
