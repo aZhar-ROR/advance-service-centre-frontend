@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import LazyImage from "./LazyImage";
 import logo from "../assets/logo_square.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const legalPages = ["/privacy-policy", "/terms-and-conditions"];
+  const isLegalPage = legalPages.includes(location.pathname);
 
   const closeMenu = () => setIsOpen(false);
 
@@ -28,7 +32,10 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8 text-lg font-medium">
-          {["Home", "About", "Services", "Contact"].map((item) => (
+          <li className="relative cursor-pointer transition duration-300 hover:text-yellow-400 after:block after:content-[''] after:h-[2px] after:w-0 after:bg-yellow-400 after:transition-all after:duration-300 after:ease-in-out hover:after:w-full">
+            <Link to="/" className="transition-all duration-300">Home</Link>
+          </li>
+          {!isLegalPage && ['About', 'Services', 'Contact'].map((item) => (
             <li 
               key={item} 
               className="relative cursor-pointer transition duration-300 hover:text-yellow-400 after:block after:content-[''] after:h-[2px] after:w-0 after:bg-yellow-400 after:transition-all after:duration-300 after:ease-in-out hover:after:w-full"
@@ -54,7 +61,10 @@ const Navbar = () => {
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
         <ul className="flex flex-col items-center py-5 space-y-5 text-lg">
-          {["Home", "About", "Services", "Contact"].map((item) => (
+          <li className="cursor-pointer transition duration-300 hover:text-yellow-400">
+            <Link to="/" onClick={closeMenu} className="transition-all duration-300">Home</Link>
+          </li>
+          {!isLegalPage && ['About', 'Services', 'Contact'].map((item) => (
             <li 
               key={item} 
               className="cursor-pointer transition duration-300 hover:text-yellow-400"

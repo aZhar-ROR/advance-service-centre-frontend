@@ -16,11 +16,15 @@ const brands = [
   "Samsung",
   "LG",
   "Sony",
+  "TCL",
+  "MI",
+  "Lloyd",
+  "Kodak",
+  "Toshiba",
   "Panasonic",
   "Whirlpool",
   "Hitachi",
-  "Daikin",
-  "Bosch",
+  "Daikin"
 ];
 
 const About = () => {

@@ -56,6 +56,23 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Legal Links */}
+      <div className="w-full mt-8 flex flex-col md:flex-row items-center justify-center gap-4">
+        <a
+          href="/privacy-policy"
+          className="text-yellow-400 hover:text-yellow-500 underline font-semibold transition duration-150"
+        >
+          Privacy Policy
+        </a>
+        <span className="hidden md:inline-block text-gray-400">|</span>
+        <a
+          href="/terms-and-conditions"
+          className="text-yellow-400 hover:text-yellow-500 underline font-semibold transition duration-150"
+        >
+          Terms & Conditions
+        </a>
+      </div>
+
       {/* Copyright Section with Animation */}
       <div className="mt-6 text-center text-sm text-gray-400 opacity-0 animate-fade-in">
         &copy; {new Date().getFullYear()} Advance Service Centre. All Rights Reserved.

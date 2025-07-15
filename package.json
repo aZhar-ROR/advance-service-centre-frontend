@@ -19,6 +19,7 @@
     "lucide-react": "^0.476.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.6.3",
     "swiper": "^11.2.4",
     "twilio": "^5.4.4"
   },
