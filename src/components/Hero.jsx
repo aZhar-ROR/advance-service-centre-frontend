@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import heroImage from "../assets/hero-face-2.jpg";
+import heroImage from "../assets/tv_reparing01.png";
 import LazyImage from "./LazyImage";
 import { Wrench, Star, Users, ShieldCheck, X } from "lucide-react";
 import { submitContactForm } from "../utils/submitContactForm";
@@ -64,13 +64,12 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center px-6 bg-gradient-to-br from-indigo-900 via-blue-900 to-gray-900 relative py-12">
       <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-10">
-        
         {/* Left: Text Content */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }} 
           animate={{ opacity: 1, x: 0 }} 
           transition={{ duration: 0.8 }}
-          className="text-center md:text-left max-w-sm md:max-w-lg"
+          className="text-center md:text-left max-w-sm md:max-w-lg flex-1"
         >
           <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-wide">
             {sentence.map((word, index) => (
@@ -100,14 +99,33 @@ const Hero = () => {
         </motion.div>
 
         {/* Right: Image */}
-        <motion.div className="w-full max-w-[200px] md:max-w-[300px] bg-white rounded-2xl overflow-hidden border-4 border-yellow-500 shadow-2xl mx-auto md:mx-0">
-          <LazyImage 
-            src={heroImage} 
-            alt="Service Center" 
-            className="w-full h-full object-cover"
-            rootMargin="100px"
-          />
+        <motion.div className="flex-1 flex items-center justify-center">
+          <div className="w-full max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-md aspect-[4/3] bg-white rounded-xl overflow-hidden border-4 border-yellow-500 shadow-2xl mx-auto">
+            <LazyImage 
+              src={heroImage} 
+              alt="Service Center" 
+              className="w-full h-full object-cover"
+              rootMargin="100px"
+            />
+          </div>
         </motion.div>
+      </div>
+
+      {/* Glass Cards - Statistics (centered below main frame) */}
+      <div className="mt-10 flex flex-wrap justify-center gap-6 w-full max-w-4xl mx-auto">
+        {stats.map((stat, index) => (
+          <motion.div
+            key={stat.id}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.3 }}
+            className="glass-card w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 p-4 flex flex-col justify-center items-center text-center rounded-xl backdrop-blur-lg bg-white/10 border border-white/30 shadow-lg"
+          >
+            <stat.icon size={28} className="text-yellow-400 mb-2" />
+            <h3 className="text-base sm:text-lg md:text-xl text-white font-bold">{stat.value}</h3>
+            <p className="text-gray-300 text-xs sm:text-sm md:text-sm">{stat.title}</p>
+          </motion.div>
+        ))}
       </div>
 
       {/* Modal */}
@@ -185,23 +203,6 @@ const Hero = () => {
           </div>
         </div>
       )}
-
-      {/* Glass Cards - Statistics */}
-      <div className="mt-10 grid grid-cols-2 sm:grid-cols-2 md:flex justify-center gap-6 w-full max-w-lg md:max-w-4xl">
-        {stats.map((stat, index) => (
-          <motion.div
-            key={stat.id}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.3 }}
-            className="glass-card w-36 h-36 md:w-40 md:h-40 p-5 flex flex-col justify-center items-center text-center rounded-xl backdrop-blur-lg bg-white/10 border border-white/30 shadow-lg"
-          >
-            <stat.icon size={32} className="text-yellow-400 mb-2" />
-            <h3 className="text-lg md:text-xl text-white font-bold">{stat.value}</h3>
-            <p className="text-gray-300 text-xs md:text-sm">{stat.title}</p>
-          </motion.div>
-        ))}
-      </div>
     </section>
   );
 };
