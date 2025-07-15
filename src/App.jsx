@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -28,11 +28,12 @@ function App() {
               <Contact />
             </>
           } />
-          <Route path="/tv-repair-services-kolkata" element={<TVRepairKolkata />} />
-          <Route path="/tv-repair-services-howrah" element={<TVRepairHowrah />} />
-          <Route path="/tv-repair-services-hooghly" element={<TVRepairHooghly />} />
+          <Route path="/tv-repair-services-in-kolkata" element={<TVRepairKolkata />} />
+          <Route path="/tv-repair-services-in-howrah" element={<TVRepairHowrah />} />
+          <Route path="/tv-repair-services-in-hooghly" element={<TVRepairHooghly />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
       <Footer />
