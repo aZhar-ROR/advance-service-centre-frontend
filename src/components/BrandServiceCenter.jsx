@@ -194,26 +194,32 @@ const locationInfo = {
 
 const getRouteInfo = (pathname) => {
   const path = pathname.substring(1); // Remove leading slash
-  const isNearMe = path.includes('near-me');
   
-  let brand = '';
-  let location = '';
+  // Extract location
+  let location = 'kolkata';
+  if (path.includes('-kolkata')) location = 'kolkata';
+  else if (path.includes('-howrah')) location = 'howrah';
+  else if (path.includes('-hooghly')) location = 'hooghly';
   
-  if (isNearMe) {
-    // Handle near-me routes
-    brand = path.split('-tv-service-near-me')[0];
-    location = 'near-me';
-  } else {
-    // Handle location-specific routes
-    const parts = path.split('-tv-service-');
-    brand = parts[0];
-    location = parts[1];
-  }
+  // Extract brand name
+  let brand = 'samsung';
+  if (path.startsWith('samsung-')) brand = 'samsung';
+  else if (path.startsWith('lg-')) brand = 'lg';
+  else if (path.startsWith('sony-')) brand = 'sony';
+  else if (path.startsWith('tcl-')) brand = 'tcl';
+  else if (path.startsWith('hisense-')) brand = 'hisense';
+  else if (path.startsWith('mi-')) brand = 'xiaomi';
+  else if (path.startsWith('oneplus-')) brand = 'oneplus';
+  else if (path.startsWith('panasonic-')) brand = 'panasonic';
+  else if (path.startsWith('vu-')) brand = 'vu';
+  else if (path.startsWith('iffalcon-')) brand = 'iffalcon';
+  else if (path.startsWith('sharp-')) brand = 'sharp';
+  else if (path.startsWith('philips-')) brand = 'philips';
 
   return {
     brand,
     location,
-    isNearMe
+    isNearMe: false
   };
 };
 
@@ -268,10 +274,7 @@ const BrandServiceCenter = () => {
       <section className="min-h-[100vh] flex flex-col items-center justify-center px-2 sm:px-6 py-8 sm:py-16 bg-gradient-to-br from-indigo-900 via-blue-900 to-gray-900 text-white">
         <div className="container mx-auto flex flex-col items-center justify-center">
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-yellow-400 mb-4 sm:mb-6 leading-tight drop-shadow-lg text-center">
-            {isNearMe ? 
-              `${brandData.name} TV Service Near You` :
-              `${brandData.name} TV Service Centre in ${locationData.name}`
-            }
+            {brandData.name} TV Service Centre in {locationData.name}
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 max-w-2xl mx-auto text-white/90 text-center">
