@@ -8,10 +8,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import tv1 from "../assets/tv-1.jpeg";
-import ac1 from "../assets/ac-1.jpeg";
-import geyser1 from "../assets/geyser-1.jpeg";
+import tv2 from "../assets/tv-2.webp"; // Assuming this is a valid image format
+import tv3 from "../assets/tv-3.webp"; // Assuming this is a valid image format
+import tv4 from "../assets/tv-4.webp"; // Assuming this is a valid image format
 
-const images = [tv1, ac1, geyser1];
+const images = [tv1, tv2, tv3, tv4];
 
 const brands = [
   { name: "Samsung", route: "samsung-tv-service-near-me" },
