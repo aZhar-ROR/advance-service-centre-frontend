@@ -4,26 +4,25 @@ import { Wrench, Wind, Flame } from "lucide-react"; // Icons
 const Services = () => {
   const serviceList = [
     { 
-      title: "LED TV Repair", 
-      desc: "Fix screen issues, sound problems, motherboard failures, and more.",
+      title: "LED & LED TV Repair", 
+      desc: "Expert repair for all LED TV brands and models. We fix screen, sound, motherboard, power, and software issues. Doorstep service available.",
       icon: <Wrench size={50} className="text-yellow-500" />
     },
     { 
-      title: "AC Maintenance", 
-      desc: "Cooling issues, gas refilling, regular servicing, and deep cleaning.",
+      title: "QLED TV Repair", 
+      desc: "Specialized QLED TV repairs including quantum dot panel issues, display calibration, and smart features troubleshooting.",
       icon: <Wind size={50} className="text-blue-500" />
     },
     { 
-      title: "Geyser Repair", 
-      desc: "Fix heating issues, water leakage, thermostat problems, and wiring faults.",
+      title: "OLED TV Repair", 
+      desc: "Professional OLED TV service for burn-in, color accuracy, display, and advanced panel repairs. Genuine parts and expert technicians.",
       icon: <Flame size={50} className="text-red-500" />
     }
   ];
 
   return (
-    <section id= "services" className="min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-16 py-16 bg-gradient-to-b from-white via-gray-100 to-white text-gray-900">
+    <section id="services" className="min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-16 py-16 bg-gradient-to-b from-white via-gray-100 to-white text-gray-900">
       <div className="container mx-auto flex flex-col items-center text-center">
-        
         {/* Heading */}
         <motion.h2 
           className="text-4xl md:text-5xl font-extrabold bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent"
@@ -31,12 +30,11 @@ const Services = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          Our Services
+          Our TV Services
         </motion.h2>
 
         <p className="mt-4 text-gray-700 text-lg md:w-2/3">
-          We specialize in professional repair and maintenance services for LED TVs, ACs, and Geysers. 
-          Our experienced technicians ensure top-quality service with customer satisfaction as our priority.
+          We specialize in professional repair and maintenance for LED, QLED, and O-LED TVs. Our experienced technicians ensure top-quality service for all major brands, with genuine parts and fast doorstep support.
         </p>
 
         {/* Service Cards */}
@@ -56,7 +54,6 @@ const Services = () => {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

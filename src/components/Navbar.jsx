@@ -8,8 +8,10 @@ import logo from "../assets/logo_square.png";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const externalPages = ["/privacy-policy", "/terms-and-conditions", "/tv-repair-services-in-kolkata", "/tv-repair-services-in-howrah", "/tv-repair-services-in-hooghly"];
-  const isexternalPage = externalPages.includes(location.pathname);
+  // const externalPages = ["/privacy-policy", "/terms-and-conditions", "/tv-repair-services-in-kolkata", "/tv-repair-services-in-howrah", "/tv-repair-services-in-hooghly"];
+  const homePage = location.pathname === "/";
+  // const isexternalPage = externalPages.includes(location.pathname);
+  console.log("Current Path:", location.pathname); // Debugging line to check current path
 
   const closeMenu = () => setIsOpen(false);
 
@@ -35,7 +37,7 @@ const Navbar = () => {
           <li className="relative cursor-pointer transition duration-300 hover:text-yellow-400 after:block after:content-[''] after:h-[2px] after:w-0 after:bg-yellow-400 after:transition-all after:duration-300 after:ease-in-out hover:after:w-full">
             <Link to="/" className="transition-all duration-300">Home</Link>
           </li>
-          {!isexternalPage && ['About', 'Services', 'Contact'].map((item) => (
+          {homePage && ['About', 'Services', 'Contact'].map((item) => (
             <li 
               key={item} 
               className="relative cursor-pointer transition duration-300 hover:text-yellow-400 after:block after:content-[''] after:h-[2px] after:w-0 after:bg-yellow-400 after:transition-all after:duration-300 after:ease-in-out hover:after:w-full"
@@ -64,7 +66,7 @@ const Navbar = () => {
           <li className="cursor-pointer transition duration-300 hover:text-yellow-400">
             <Link to="/" onClick={closeMenu} className="transition-all duration-300">Home</Link>
           </li>
-          {!isexternalPage && ['About', 'Services', 'Contact'].map((item) => (
+          {homePage && ['About', 'Services', 'Contact'].map((item) => (
             <li 
               key={item} 
               className="cursor-pointer transition duration-300 hover:text-yellow-400"
