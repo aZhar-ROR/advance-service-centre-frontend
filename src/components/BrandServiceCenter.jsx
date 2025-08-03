@@ -278,9 +278,9 @@ const BrandServiceCenter = () => {
           </h1>
           
           <p className="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 max-w-2xl mx-auto text-white/90 text-center">
-            {isNearMe ?
-              `Authorized ${brandData.name} TV repair and service center near you. Expert technicians, genuine parts, doorstep service.` :
-              `Authorized ${brandData.name} TV repair and service center in ${locationData.name}. Expert technicians, genuine parts, doorstep service.`
+            {isNearMe
+              ? `Trusted ${brandData.name} TV repair and service center near you. Expert technicians, genuine parts, doorstep service.`
+              : `Trusted ${brandData.name} TV repair and service center in ${locationData.name}. Expert technicians, genuine parts, doorstep service.`
             }
           </p>
 
