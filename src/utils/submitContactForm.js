@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function submitContactForm(
   formData,
-  endpoint = `/api/send-message`
+  endpoint = `http://localhost:5000/api/send-message`
 ) {
   try {
     await axios.post(endpoint, formData);
