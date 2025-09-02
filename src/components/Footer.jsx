@@ -47,12 +47,12 @@ const Footer = () => {
               hello.azhar.dev@gmail.com
             </a>
           </p>
-          <p className="flex items-center gap-2">
+          {/* <p className="flex items-center gap-2">
             <Phone size={18} className="text-cyan-300" /> 
             <a href="tel:+917076404076" className="underline hover:text-cyan-300 transition">
               +91 70764 04076
             </a>
-          </p>
+          </p> */}
         </div>
       </div>
 

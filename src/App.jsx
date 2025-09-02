@@ -13,6 +13,7 @@ import TVRepairKolkata from "./components/TVRepairKolkata";
 import TVRepairHowrah from "./components/TVRepairHowrah";
 import TVRepairHooghly from "./components/TVRepairHooghly";
 import BrandServiceCenter from "./components/BrandServiceCenter";
+import TVRepairService from "./components/TVRepairService";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/tv-repair-services-in-kolkata" element={<TVRepairKolkata />} />
           <Route path="/tv-repair-services-in-howrah" element={<TVRepairHowrah />} />
           <Route path="/tv-repair-services-in-hooghly" element={<TVRepairHooghly />} />
+          <Route path="/tv-repair-service" element={<TVRepairService />} />
           
           <Route path="/samsung-tv-service-near-me" element={<BrandServiceCenter />} />
           <Route path="/lg-tv-service-near-me" element={<BrandServiceCenter />} />
