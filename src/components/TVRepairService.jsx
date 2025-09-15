@@ -1,32 +1,33 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { CheckCircle, Clock, DollarSign, Wrench, Phone } from "lucide-react";
+import { CheckCircle, Phone } from "lucide-react";
 import FloatingButtons from "./FloatingButtons";
 import heroImage from "../assets/tv-1.jpeg";
+import About from "./About";
+import WhyUs from "./WhyUs";
 
 const TVRepairService = () => {
-  const features = [
-    {
-      icon: <CheckCircle size={50} className="text-green-400" />,
-      title: "Certified Technicians",
-      desc: "Expert certified technicians with years of experience"
-    },
-    {
-      icon: <Clock size={50} className="text-blue-400" />,
-      title: "Quick Doorstep Service Across Your Area",
-      desc: "Fast doorstep service with same-day availability"
-    },
-    {
-      icon: <DollarSign size={50} className="text-yellow-400" />,
-      title: "Affordable Pricing",
-      desc: "Transparent and competitive pricing with no hidden charges"
-    },
-    {
-      icon: <Wrench size={50} className="text-purple-400" />,
-      title: "Same-Day Service Available for Most Repairs",
-      desc: "Quick turnaround for most TV repair issues"
-    }
-  ];
+  // const features = [
+  //   {
+  //     icon: <CheckCircle size={50} className="text-green-400" />,
+  //     title: "Certified Technicians",
+  //     desc: "Expert certified technicians with years of experience"
+  //   },
+  //   {
+  //     icon: <Clock size={50} className="text-blue-400" />,
+  //     title: "Quick Doorstep Service Across Your Area",
+  //     desc: "Fast doorstep service with same-day availability"
+  //   },
+  //   {
+  //     icon: <DollarSign size={50} className="text-yellow-400" />,
+  //     title: "Affordable Pricing",
+  //     desc: "Transparent and competitive pricing with no hidden charges"
+  //   },
+  //   {
+  //     icon: <Wrench size={50} className="text-purple-400" />,
+  //     title: "Same-Day Service Available for Most Repairs",
+  //     desc: "Quick turnaround for most TV repair issues"
+  //   }
+  // ];
 
   const services = [
     "Screen Repair & Replacement",
@@ -164,7 +165,7 @@ const TVRepairService = () => {
               </p>
               
               <p className="text-gray-700 text-lg leading-relaxed max-w-4xl mx-auto">
-                If you're searching for a reliable TV repair near you, our doorstep service ensures quick and hassle-free support. With expert technicians and genuine spare parts, we bring back your TV's performance like new.
+                If you&apos;re searching for a reliable TV repair near you, our doorstep service ensures quick and hassle-free support. With expert technicians and genuine spare parts, we bring back your TV&apos;s performance like new.
               </p>
             </motion.div>
 
@@ -213,6 +214,16 @@ const TVRepairService = () => {
             </motion.div>
           </div>
         </div>
+      </section>
+
+      {/* About Section */}
+      <section>
+        <About />
+      </section>
+
+      {/* Why Us Section */}
+      <section>
+        <WhyUs />
       </section>
 
       <FloatingButtons />

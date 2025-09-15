@@ -1,6 +1,3 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
 const PrivacyPolicy = () => (
   <section className="min-h-screen px-6 py-16 bg-gradient-to-b from-white via-yellow-50 to-white text-gray-900">
     <div className="container mx-auto max-w-3xl p-8 rounded-2xl shadow-2xl border border-yellow-400">
